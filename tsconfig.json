@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "sourceMap": true,
+    "target": "esnext",
+    "types": ["@testing-library/jest-dom"]
+  },
+  "include": ["src", "spec", "jest.d.ts"],
+  "exclude": ["node_modules", "coverage"]
+}
