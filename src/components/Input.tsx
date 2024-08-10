@@ -24,8 +24,11 @@ export const Input = ({ defaultValue, onChange }: Inputprops) => {
 
     return (
         <div className="input-field">
-            <label htmlFor="input">Введите заголовок</label>
+            <label htmlFor="input" data-testid="label">Введите заголовок</label>
             <input type="text"
+                style={{ color: 'red' }}
+                className="NewInput"
+                title="inputDOM"
                 id="input"
                 value={inputValue}
                 onChange={handleChange}
