@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react"
 import "./style.css"
+import { validateLength, MESSAGE } from "../helpers/helper"
 
 type Inputprops = {
     defaultValue: string
@@ -13,12 +14,12 @@ export const Input = ({ defaultValue, onChange }: Inputprops) => {
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const val = event.target.value
-        if (val.length > 32) {
-            setLabelValue(`Слишком длинное значение. Длинна ${val.length}`)
-        } else {
+        if (validateLength(val)) {
             setLabelValue('')
             setInputValue(val)
             onChange(val)
+        } else {
+            setLabelValue(MESSAGE)
         }
     }
 
@@ -33,7 +34,7 @@ export const Input = ({ defaultValue, onChange }: Inputprops) => {
                 value={inputValue}
                 onChange={handleChange}
                 placeholder="Заголовок" />
-            <span >{labelValue}</span>
+            <span data-testid="Text">{labelValue}</span>
         </div>
     )
 }

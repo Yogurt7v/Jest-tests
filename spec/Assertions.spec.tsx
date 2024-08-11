@@ -1,5 +1,6 @@
 import { Input } from "../src/components/Input"
 import { render, screen } from "@testing-library/react"
+import { validateLength } from "../src/helpers/helper"
 
 it("строгое сравнение значений", () => {
     // expect(1 + 2).toBe(4) // сравнение примитивов
@@ -134,7 +135,7 @@ it("Проверка DOM узлов", () => {
 })
 
 
-it.only("Модификаторы", async () => {
+it("Модификаторы", async () => {
     expect(1 + 2).not.toBe(4) // не равно !!!
     const res = Promise.resolve("test resolved")
     const rej = Promise.reject(new Error("test rejected"))
@@ -144,4 +145,50 @@ it.only("Модификаторы", async () => {
     await expect(res).resolves.toBe("test resolved") // проверка промиса
 
     await expect(rej).rejects.toThrow("test rejected") // проверка промиса
+})
+
+
+it("Мокирование функции", () => {
+    // const fn = jest.fn().mockReturnValue(1); //()=>void   mockReturnValue - задаём обязательное значение возвращаемое функцией
+
+    // const context = { a: 1 }
+    // fn(1, 2);
+    // console.log(fn.mock);
+
+    // fn.apply(context, [1, 2])
+    // console.log(fn.mock);
+
+    // fn(1, 2)
+
+    // console.log(fn.mock);
+    // fn.mockClear(); // очистка мока
+    // console.log(fn.mock);
+
+    // fn.mockReset(); // сброс мока даже инплементацию (формула функции в объявлении fn)
+    // console.log(fn.mock);
+
+    // const fn = jest.fn().mockImplementationOnce(() => 10); // mockImplementationOnce - задаём обязательное значение возвращаемое функцией которое вернётся лишь единожды
+    // const fn2 = jest.fn().mockReturnValueOnce(11).mockReturnValue("forever")
+    // console.log(fn2());
+    // console.log(fn2());
+    // console.log(fn2());
+    // console.log(fn2());
+
+
+    // const fn = jest.fn().mockResolvedValue("promise") //  задаём значение возвращаемое промисом
+    // const fn = jest.fn().mockName("Теперь у нам функция имеет такое название")
+
+
+    // const fn = jest.spyOn(console, "error") // используй за useState
+    // fn.mockImplementation(() => 44)
+    // console.error("Error")
+    // console.log(fn.mock);
+    // fn.mockRestore()
+
+})
+
+it.only("Мокирование модулей", () => {
+    const res = validateLength("проверка примера")
+    console.log("validateLength", res);
+
 })
