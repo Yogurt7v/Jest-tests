@@ -12,7 +12,7 @@ import { validateLength } from '../src/helpers/helper'
 // })
 
 describe("Поле ввода", () => {
-    const userEvent = uE.setup() // {delay: 100}
+    const userEvent = uE.setup({ advanceTimers: jest.advanceTimersByTime }) // {delay: 100} // использовать когда таймеры мокированы
 
     it("Оганичение на ввод более 32 символов", async () => {
 
@@ -21,10 +21,10 @@ describe("Поле ввода", () => {
         const input = screen.getByRole("textbox")
         const hintEL = screen.getByTestId("Text")
 
-        await userEvent.clear(input)
+        await userEvent.clear(input) // userEvent под капотом использует SetTimeout
         await userEvent.type(input, "Hey")
 
-        expect(hintEL.innerHTML).not.toBe("")
+        expect(hintEL.innerHTML).toBe("")
 
     })
 

@@ -7,9 +7,11 @@ expect.extend({
   toHaveDoneItem,
 });
 
-jest.mock('./src/helpers/helper', () => {
-  const realHelpers = jest.requireActual('./src/helpers/helper');
-  return {
-    ...realHelpers,
-  };
-});
+// jest.mock('./src/helpers/helper', () => {
+//   const realHelpers = jest.requireActual('./src/helpers/helper');
+//   return {
+//     ...realHelpers,
+//   };
+// });
+
+jest.useFakeTimers();
